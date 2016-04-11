@@ -1,0 +1,7 @@
+bin/
+.idea/
+*.pyc
+include/
+lib/
+log/
+share/
