@@ -1,0 +1,13 @@
+INFO       2016-03-29 21:53:51,461 log:127 log_scrapy_info Scrapy 1.0.5 started (bot: m_spider)
+INFO       2016-03-29 21:53:51,461 log:130 log_scrapy_info Optional features available: ssl, http11
+INFO       2016-03-29 21:53:51,462 log:133 log_scrapy_info Overridden settings: {'NEWSPIDER_MODULE': 'm_spider.spiders', 'DUPEFILTER_CLASS': 'scrapy.dupefilters.BaseDupeFilter', 'SPIDER_MODULES': ['m_spider.spiders'], 'BOT_NAME': 'm_spider', 'LOGSTATS_INTERVAL': 0, 'COOKIES_ENABLED': False}
+ERROR      2016-03-29 21:53:51,462 spider:49 spidercls_for_request More than one spider can handle: <GET http://www.kaolafm.com> - kaolafm, splash_kaola
+INFO       2016-03-29 21:53:51,671 middleware:51 from_settings Enabled extensions: CloseSpider, TelnetConsole, CoreStats, SpiderState, AutoThrottle
+INFO       2016-03-29 21:53:51,711 middleware:51 from_settings Enabled downloader middlewares: HttpAuthMiddleware, DownloadTimeoutMiddleware, UserAgentMiddleware, RetryMiddleware, DefaultHeadersMiddleware, MetaRefreshMiddleware, HttpCompressionMiddleware, RedirectMiddleware, ChunkedTransferMiddleware, DownloaderStats
+INFO       2016-03-29 21:53:51,712 middleware:51 from_settings Enabled spider middlewares: HttpErrorMiddleware, OffsiteMiddleware, RefererMiddleware, UrlLengthMiddleware, DepthMiddleware
+INFO       2016-03-29 21:53:51,769 middleware:51 from_settings Enabled item pipelines: XmlyAudiosDownloader, XmlyImageDownloader, KlAudioDownloader, KlimageDownloader, SaveToMongo
+DEBUG      2016-03-29 21:53:51,770 telnet:60 start_listening Telnet console listening on 127.0.0.1:6023
+INFO       2016-03-29 21:53:51,776 engine:231 open_spider Spider opened
+DEBUG      2016-03-29 21:53:51,829 engine:213 _on_success Crawled (200) <GET http://www.kaolafm.com> (referer: None)
+DEBUG      2016-03-29 21:53:52,152 loader:342 __init__ Using default logger
+DEBUG      2016-03-29 21:53:52,153 loader:342 __init__ Using default logger
