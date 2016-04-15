@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<MPCWebCmd>
+    <CommandType>AddTask</CommandType>
+    <AddTask>
+        <MPC>
+            <Header>
+                <Version>1.0</Version>
+                <RequestID>2b076d7d59c29d2b027bf8d2782a49fc</RequestID>
+                <RequestTime>2016-01-29 14:24:31</RequestTime>
+                <RequestMQ />
+            </Header>
+
+            <Content>
+                <MPCType>AddTask</MPCType>
+                <AddTask>
+                    <BaseInfo>
+                        <TaskGUID>2b076d7d59c29d2b027bf8d2782a49fc</TaskGUID>
+                        <TaskName>风尚CBD</TaskName>
+                        <ColumnName />
+                        <TaskLength>n/a</TaskLength>
+                        <TaskPriority>0</TaskPriority>
+                        <DispatchType>auto</DispatchType>
+                        <Controllable>1</Controllable>
+                        <PutinTime>2016-01-29 14:24:31</PutinTime>
+                    </BaseInfo>
+
+
+                    <TaskInfo>
+                        <Scope>SoapTargetInfo</Scope>
+                        <Schema />
+                        <Data>
+                            <SoapTargetInfo>
+                                <SoapTargetUri>http://172.20.13.108:8080/vms/services/IServiceServlet?wsdl</SoapTargetUri>
+                            </SoapTargetInfo>
+                            <IsSplit>0</IsSplit>
+                            <transcodeSource>UPLOAD</transcodeSource>
+                        </Data>
+                    </TaskInfo>
+
+
+                    <TaskInfo>
+                        <Scope>DocumentInfo</Scope>
+                        <Schema />
+                        <Data>
+                            <DocumentInfo>
+                                <PGMNAME>风尚CBD</PGMNAME>
+                                <CATALOGNAME>音频收录\中央人民广播电台\都市之声</CATALOGNAME>
+                                <EDITCATALOG>
+                                    <SYSTEM>BSRecorderActor</SYSTEM>
+                                    <PGMGUID>2b076d7d59c29d2b027bf8d2782a49fc</PGMGUID>
+                                    <AttributeItem>
+                                        <ItemCode>Title</ItemCode>
+                                        <ItemName>节目名称</ItemName>
+                                        <Value>风尚CBD</Value>
+                                    </AttributeItem>
+                                    <AttributeItem>
+                                        <ItemCode>CreatorName</ItemCode>
+                                        <ItemName>创建人姓名</ItemName>
+                                        <Value>None</Value>
+                                    </AttributeItem>
+                                    <AttributeItem>
+                                        <ItemCode>PgmType</ItemCode>
+                                        <ItemName>节目类型</ItemName>
+                                        <Value>radio</Value>
+                                    </AttributeItem>
+                                    <AttributeItem>
+                                        <ItemCode>PgmNote</ItemCode>
+                                        <ItemName>节目描述</ItemName>
+                                        <Value>Good</Value>
+                                    </AttributeItem>
+                                    <AttributeItem>
+                                        <ItemCode>firstplaytime</ItemCode>
+                                        <ItemName>首播时间</ItemName>
+                                        <Value>2016-01-29</Value>
+                                    </AttributeItem>
+                                    <AttributeItem>
+                                        <ItemCode>broadstarttime</ItemCode>
+                                        <ItemName>开始时间</ItemName>
+                                        <Value>2016-01-29 11:00:00</Value>
+                                    </AttributeItem>
+                                    <AttributeItem>
+                                        <ItemCode>broadendtime</ItemCode>
+                                        <ItemName>结束时间</ItemName>
+                                        <Value>2016-01-29 14:00:00</Value>
+                                    </AttributeItem>
+                                </EDITCATALOG>
+                            </DocumentInfo>
+                        </Data>
+                    </TaskInfo>
+
+
+                    <MediaFile>
+                        <GroupType>gv</GroupType>
+                        <MediaType>mv</MediaType>
+                        <FileName>W:/recorder//recorder/2016/01/29/42372.mp4</FileName>
+                        <InPoint>0</InPoint>
+                        <OutPoint>-1</OutPoint>
+                    </MediaFile>
+                    <PolicyID>1125</PolicyID>
+                </AddTask>
+            </Content>
+
+        </MPC>
+    </AddTask>
+</MPCWebCmd>
