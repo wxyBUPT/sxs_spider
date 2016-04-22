@@ -18,7 +18,7 @@ def getSummary():
     klRes = {}
     xmlyRes = {}
     qtRes['albumCount'] = qtUtil.getAlbumCount()
-    qtRes['audioCont'] = qtUtil.getTotalAudioCount()
+    qtRes['audioCount'] = qtUtil.getTotalAudioCount()
     qtRes['categoryWithCount'] = qtUtil.getAllCategoryWithCount()
     xmlyRes['albumCount'] = xmlyUtil.getAlbumCount()
     xmlyRes['audioCount'] = xmlyUtil.getTotalAudioCount()
@@ -28,7 +28,7 @@ def getSummary():
     klRes['categoryWithCount'] = klUtil.getAllCategoryWithCount()
     res = dict(
         totalAlbumCount = qtRes['albumCount'] + xmlyRes['albumCount'] + klRes['albumCount'],
-        totalAudioCount = qtRes['audioCont'] + qtRes['audioCont'] + klRes['audioCount'],
+        totalAudioCount = qtRes['audioCount'] + qtRes['audioCount'] + klRes['audioCount'],
         qtRes = qtRes,
         klRes = klRes,
         xmlyRes = xmlyRes,
