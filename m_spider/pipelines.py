@@ -243,132 +243,113 @@ class SaveToMongo(object):
         return item
 
     def _saveKLAudio(self,item):
-        try:
-            #以audioId 与 playUrl 为主键更新或者插入数据
-            audio = self.db[item.collection].find_one(
-                    {
-                        'audioId':item["audioId"],
-                        'playUrl':item['playUrl']
-                    }
-            )
-            if audio:
-                self.db[item.collection].update(
-                    {
-                        "_id":audio['_id']
-                    },
-                    {
-                        "$inc":{"crawledCount":1},
-                        "$set":dict(
-                            likedNum = item['likedNum'],
-                            listenNum = item['listenNum'],
-                            commentNum = item['commentNum']
-                        )
-                    }
-                )
-            else:
-                tmp = dict(item)
-                tmp['crawledCount'] = 1
-                tmp['uuid'] = uuid.uuid1().hex
-                tmp['crawledTime'] = datetime.datetime.now()
-                tmp['sendToCNRTime'] = None
-                tmp['audioDownloadDir'] = None
-                self.db[item.collection].insert(
-                   tmp
-                )
-        except Exception,err:
-            logging.error(Exception,err)
-            logging.error(u'未能保存item 到mongo 中')
-        finally:
-            return item
-    def _saveKlAlbum(self,item):
-        try:
-            album = self.db[item.collection].find_one(
+        #以audioId 与 playUrl 为主键更新或者插入数据
+        audio = self.db[item.collection].find_one(
                 {
-                    'categoryId':item['categoryId'],
-                    'albumId' : item['albumId']
+                    'audioId':item["audioId"],
+                    'playUrl':item['playUrl']
+                }
+        )
+        if audio:
+            self.db[item.collection].update(
+                {
+                    "_id":audio['_id']
+                },
+                {
+                    "$inc":{"crawledCount":1},
+                    "$set":dict(
+                        likedNum = item['likedNum'],
+                        listenNum = item['listenNum'],
+                        commentNum = item['commentNum']
+                    )
                 }
             )
-            #更新本专辑被爬取的次数
-            if album:
-                self.db[item.collection].update(
-                    {
-                        '_id':album['_id']
-                    },
-                    {
-                        '$inc':{'crawledCount':1},
-                        '$set':dict(item)
-                    }
-                )
-            else:
-                tmp = dict(item)
-                tmp['crawledCount'] = 1
-                tmp['crawledTime'] = datetime.datetime.now()
-                self.db[item.collection].insert(
-                    dict(item)
-                )
-        except Exception,err:
-            logging.error(Exception,err)
-            logging.error(u'item 未被保存 %s '%item)
-        finally:
-            return item
+        else:
+            tmp = dict(item)
+            tmp['crawledCount'] = 1
+            tmp['uuid'] = uuid.uuid1().hex
+            tmp['crawledTime'] = datetime.datetime.now()
+            tmp['sendToCNRTime'] = None
+            tmp['audioDownloadDir'] = None
+            self.db[item.collection].insert(
+               tmp
+            )
+        return item
+
+    def _saveKlAlbum(self,item):
+        album = self.db[item.collection].find_one(
+            {
+                'categoryId':item['categoryId'],
+                'albumId' : item['albumId']
+            }
+        )
+        #更新本专辑被爬取的次数
+        if album:
+            self.db[item.collection].update(
+                {
+                    '_id':album['_id']
+                },
+                {
+                    '$inc':{'crawledCount':1},
+                    '$set':dict(item)
+                }
+            )
+        else:
+            tmp = dict(item)
+            tmp['crawledCount'] = 1
+            tmp['crawledTime'] = datetime.datetime.now()
+            self.db[item.collection].insert(
+                dict(item)
+            )
+        return item
 
     def _saveXMLYAudio(self,item):
-        try:
-            audio = self.db[item.collection].find_one(
+        audio = self.db[item.collection].find_one(
+            {
+                'album_id':item['album_id'],
+                'id':item['id']
+            }
+        )
+        if not audio:
+            tmp = dict(item)
+            tmp['crawledCount'] = 1
+            tmp['uuid'] = uuid.uuid1().hex
+            tmp['crawledTime'] = datetime.datetime.now()
+            tmp['audioDownloadDir'] = None
+            tmp['sendToCNRTime'] = None
+            tmp['audioChecksum'] = None
+            self.db[item.collection].insert(tmp)
+        else:
+            self.db[item.collection].update(
                 {
-                    'album_id':item['album_id'],
-                    'id':item['id']
+                    '_id':audio['_id']
+                },
+                {
+                    "$inc":{'crawledCount':1},
+                    "$set":dict(item)
                 }
             )
-            if not audio:
-                tmp = dict(item)
-                tmp['crawledCount'] = 1
-                tmp['uuid'] = uuid.uuid1().hex
-                tmp['crawledTime'] = datetime.datetime.now()
-                tmp['audioDownloadDir'] = None
-                tmp['sendToCNRTime'] = None
-                tmp['audioChecksum'] = None
-                self.db[item.collection].insert(tmp)
-            else:
-                self.db[item.collection].update(
-                    {
-                        '_id':audio['_id']
-                    },
-                    {
-                        "$inc":{'crawledCount':1},
-                        "$set":dict(item)
-                    }
-                )
-        except Exception,err:
-            logging.error(Exception,err)
-            logging.error(u'存储 xmly audio 失败 %s'%item)
-        finally:
-            return item
+        return item
 
     def _saveXMLYAlbum(self,item):
-        try:
-            album = self.db[item.collection].find_one(
+        album = self.db[item.collection].find_one(
+            {
+                'album_id':item['album_id']
+            }
+        )
+        if not album:
+            tmp = dict(item)
+            tmp['crawledCount'] = 1
+            tmp['crawledTime'] = datetime.datetime.now()
+            self.db[item.collection].insert(tmp)
+        else:
+            self.db[item.collection].update(
                 {
-                    'album_id':item['album_id']
+                    '_id':album['_id'],
+                },
+                {
+                    '$inc':{'crawledCount':1},
+                    "$set":dict(item)
                 }
             )
-            if not album:
-                tmp = dict(item)
-                tmp['crawledCount'] = 1
-                tmp['crawledTime'] = datetime.datetime.now()
-                self.db[item.collection].insert(tmp)
-            else:
-                self.db[item.collection].update(
-                    {
-                        '_id':album['_id'],
-                    },
-                    {
-                        '$inc':{'crawledCount':1},
-                        "$set":dict(item)
-                    }
-                )
-        except Exception,err:
-            logging.error(Exception,err)
-            logging.error(u'存储 xmly Album 失败')
-        finally:
-            return item
+        return item
