@@ -151,6 +151,7 @@ class XmlaSpider(scrapy.Spider):
                 )
                 audio["id"] = a_id
                 audio["created_at"] = created_at
+                audio['uploadUserName'] = xmlyAl['uploadUserName']
             except:
                 pass
             a_url = "http://www.ximalaya.com/tracks/%s.json"%(a_id)
@@ -167,7 +168,13 @@ class XmlaSpider(scrapy.Spider):
             except:
                 pass
             audio.update(tmpDict)
-            audios.append(audio)
+            yield audio
+            audios.append(
+                dict(
+                    id = audio.get('id',None),
+                    album_id = audio.get('album_id',None)
+                )
+            )
 
         for i in range(2,pageCount+1):
             tmpUrl = "%s?page=%s"%(curBaseUrl,i)
@@ -185,6 +192,8 @@ class XmlaSpider(scrapy.Spider):
                     )
                     audio["id"] = a_id
                     audio["created_at"] = created_at
+                    audio['uploadUserName'] = xmlyAl['uploadUserName']
+
                 except:
                     pass
                 a_url = "http://www.ximalaya.com/tracks/%s.json"%(a_id)
@@ -201,7 +210,11 @@ class XmlaSpider(scrapy.Spider):
                 except:
                     pass
                 audio.update(tmpDict)
-                audios.append(audio)
+                yield audio
+                audios.append(dict(
+                    id = audio.get('id',None),
+                    album_id = audio.get('album_id',None)
+                ))
             pass
         xmlyAl['audios'] = audios
         yield xmlyAl

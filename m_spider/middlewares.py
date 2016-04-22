@@ -1,7 +1,9 @@
 #coding=utf-8
 __author__ = 'xiyuanbupt'
-
 import random
+from threading import Thread,Event
+import signal,sys
+
 from scrapy import signals
 from scrapy.contrib.downloadermiddleware.useragent import UserAgentMiddleware
 
@@ -29,3 +31,4 @@ class RandomUserAgentMiddleware(UserAgentMiddleware):
         user_agent = random.choice(self.user_agent_list)
         if user_agent:
             request.headers.setdefault('User-Agent', user_agent)
+

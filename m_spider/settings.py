@@ -51,7 +51,7 @@ NEWSPIDER_MODULE = 'm_spider.spiders'
 
 #MongoDB 设置
 MONGO_URI = 'mongodb://localhost:27017'
-MONGO_DATABASE = 'w_spider'
+MONGO_DATABASE = 'test_spider'
 
 #设置下载图片存储的位置
 IMAGES_STORE = '/var/crawler/images'
@@ -61,6 +61,26 @@ XMLY_SETTINGS= {
         "IMAGES_STORE":'/var/crawler/xmly/images',
         "FILES_STORE":'/var/crawler/xmly/audios'
 }
+KL_SETTINGS = {
+        "IMAGES_STORE":'/var/crawler/kl/images',
+        "FILES_STORE":'/var/crawler/kl/audios'
+}
+QT_SETTINGS = {
+        "IMAGES_STORE":'/var/crawler/qt/images',
+        "FILES_STORE":'/var/crawler/qt/audios'
+}
+QINGTINGCONF = {
+        'allowdomains' : ['qingting.fm'],
+        'start_urls' : ['http://www.qingting.fm'],
+        'playPR' : 'http://od.qingting.fm',
+        'logfile' : 'qingting.log',
+        'collection' : 'qingting_item',
+        'qt_c_settings':{
+        "IMAGES_STORE":'/var/crawler/qt/images',
+        "FILES_STORE":'/var/crawler/qt/audios',
+        }
+}
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 
 #设置自定义限速
@@ -95,6 +115,9 @@ COOKIES_ENABLED=False
 #SPIDER_MIDDLEWARES = {
 #    'm_spider.middlewares.MyCustomSpiderMiddleware': 543,
 #}
+#SPIDER_MIDDLEWARES = {
+#        'm_spider.middlewares.SaveInfoToDB':200,
+#}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
@@ -114,10 +137,10 @@ COOKIES_ENABLED=False
 ITEM_PIPELINES = {
 #存储到 mongodb 中
         'm_spider.pipelines.SaveToMongo':800,
-        'm_spider.pipelines.KlimageDownloader':750,
-        'm_spider.pipelines.KlAudioDownloader':749,
-        'm_spider.pipelines.XmlyImageDownloader':748,
-        'm_spider.pipelines.XmlyAudiosDownloader':747,
+#        'm_spider.pipelines.KlimageDownloader':750,
+#        'm_spider.pipelines.KlAudioDownloader':749,
+#        'm_spider.pipelines.XmlyImageDownloader':748,
+#        'm_spider.pipelines.XmlyAudiosDownloader':747,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -140,5 +163,4 @@ AUTOTHROTTLE_DEBUG=False
 #HTTPCACHE_IGNORE_HTTP_CODES=[]
 #HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
 #如下代码为设置随机用户代理
-USER_AGENT_LIST="/home/crawler/m_spider/m_spider/etc/user_agents.txt"
-
+#USER_AGENT_LIST="/home/crawler/m_spider/m_spider/etc/user_agents.txt"

@@ -137,7 +137,8 @@ class KLAudio(scrapy.Item):
     '''
     对应kaola fm 中的音频内容
     '''
-    s_type = 'None'
+    s_type = 'kl_audio'
+    collection = 'kl_audio'
     #歌曲id
     audioId = scrapy.Field()
     #歌曲的url 地址，大多数时候获得不到电台的url 地址,当前被注释掉
@@ -179,9 +180,12 @@ class KLAudio(scrapy.Item):
     commentNum = scrapy.Field()
     uploaderName = scrapy.Field()
     uploaderId = scrapy.Field()
+    album_title = scrapy.Field()
 
-    #如下内容为通过pipline 下载的到内
-    #{path:'',checksum:''}
+    #用于保存categoryName
+    categoryName = scrapy.Field()
+    albumName = scrapy.Field()
+    fullDescs = scrapy.Field()
 
 
 '''
@@ -347,6 +351,9 @@ class XMLYAudio(scrapy.Item):
     http://www.ximalaya.com/36327519/sound/11362725
     获得
     '''
+    collection = 'xmly_audio'
+    contentSource = 'www.ximalaya.com'
+    s_type = 'xmly_audio'
 
     #歌曲的id
     id = scrapy.Field()
@@ -383,3 +390,33 @@ class XMLYAudio(scrapy.Item):
 
     #音频的标签内容
     tags = scrapy.Field()
+    #上传者的姓名
+    uploadUserName = scrapy.Field()
+
+class QTAudio(scrapy.Item):
+    collection = 'qt_audio'
+    s_type = 'qt_audio'
+    category_title = scrapy.Field()
+    sub_category_title = scrapy.Field()
+    album_title = scrapy.Field()
+    audioName = scrapy.Field()
+    playUrl = scrapy.Field()
+
+
+
+
+
+class QingtingItem(scrapy.Item):
+    collection = 'qt_item'
+    s_type = 'qt_item'
+    contentSource = scrapy.Field()  #"www.qingting.fm"
+    crawlType = scrapy.Field()  #"qt_album"
+    category = scrapy.Field()   #总分类
+    subcategory = scrapy.Field()    #子分类
+    albumName = scrapy.Field()  #专辑名称
+    albumPicUrl = scrapy.Field()    #专辑图片链接
+    albumPicPath =scrapy.Field()    #专辑图片保存地址
+    fullDescs = scrapy.Field()  #专辑介绍
+    crawlTime = scrapy.Field()  #爬取时间
+    audios = scrapy.Field() #专辑下节目列表
+    pass

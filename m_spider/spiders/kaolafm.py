@@ -2,6 +2,7 @@
 from __future__ import absolute_import
 import json
 import logging,datetime
+import uuid
 
 import scrapy,requests
 
@@ -342,7 +343,18 @@ class KaolafmSpider(scrapy.Spider):
                 klAudio['commentNum'] = data.get('commentNum',None)
                 klAudio['uploaderId'] = data.get('uploaderId',None)
                 klAudio['uploaderName'] = data.get('uploaderName',None)
-                audioList.append(klAudio)
+                klAudio['album_title'] = klAlbum['albumName']
+
+
+
+
+                yield klAudio
+
+                audioList.append({
+                    'playUrl':klAudio['playUrl'],
+                    'audioId':klAudio['audioId']
+                })
+
         #将数据加载到 klAlbum
         klAlbum['audios'] = audioList
 
