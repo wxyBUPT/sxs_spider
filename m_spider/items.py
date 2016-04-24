@@ -181,6 +181,7 @@ class KLAudio(scrapy.Item):
     uploaderName = scrapy.Field()
     uploaderId = scrapy.Field()
     album_title = scrapy.Field()
+    category_title = scrapy.Field()
 
     #用于保存categoryName
     categoryName = scrapy.Field()
