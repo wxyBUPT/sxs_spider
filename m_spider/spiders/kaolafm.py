@@ -344,7 +344,7 @@ class KaolafmSpider(scrapy.Spider):
                 klAudio['uploaderId'] = data.get('uploaderId',None)
                 klAudio['uploaderName'] = data.get('uploaderName',None)
                 klAudio['album_title'] = klAlbum['albumName']
-                klAlbum['category_title'] = klAlbum['category_title']
+                klAudio['category_title'] = klAlbum['category_title']
 
 
 
