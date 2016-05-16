@@ -11,7 +11,7 @@ import pymongo
 from scrapy.pipelines.files import FilesPipeline
 from scrapy.pipelines.images import ImagesPipeline
 import scrapy
-from datetime import date,datetime
+from datetime import date
 
 class MSpiderPipeline(object):
     def process_item(self, item, spider):
@@ -174,7 +174,7 @@ class SaveToMongo(object):
 
     def process_item(self,item,spider):
         #将每天爬取的数量保存到mongo中
-        dt = datetime.now()
+        dt = datetime.datetime.now()
         self.now = dt.replace(hour=0, minute=0, second=0, microsecond=0)
         #将具体的数据保存到 mongo 中
         s_type = item.s_type
