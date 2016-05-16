@@ -174,7 +174,7 @@ class SaveToMongo(object):
 
     def process_item(self,item,spider):
         #将每天爬取的数量保存到mongo中
-        self.now = str(date.today())
+        self.now = date.today()
         #将具体的数据保存到 mongo 中
         s_type = item.s_type
         if s_type == 'xmly_audio':
@@ -193,10 +193,10 @@ class SaveToMongo(object):
             self.db[s_type].insert(dict(item))
 
     def _saveQTAlbum(self,item):
-        key =  'album' + self.now
         self.db['qt_daily'].update(
             {
-                'key':key,
+                'key':'album',
+                'day':self.now
             },
             {
                 "$inc":{"crawledCount":1}
@@ -229,10 +229,10 @@ class SaveToMongo(object):
         return item
 
     def _saveQTAudio(self,item):
-        key = 'audio' + self.now
         self.db['qt_daily'].update(
             {
-                'key':key,
+                'key':'audio',
+                'day':self.now
             },
             {
                 "$inc":{"crawledCount":1}
@@ -267,10 +267,10 @@ class SaveToMongo(object):
         return item
 
     def _saveKLAudio(self,item):
-        key = 'audio' + self.now
         self.db['kl_daily'].update(
             {
-                'key':key,
+                'key':'audio',
+                'day':self.now
             },
             {
                 "$inc":{"crawledCount":1}
@@ -311,10 +311,10 @@ class SaveToMongo(object):
         return item
 
     def _saveKlAlbum(self,item):
-        key = 'album' + self.now
         self.db['kl_daily'].update(
             {
-                'key':key,
+                'key':'album',
+                'day':self.now
             },
             {
                 "$inc":{"crawledCount":1}
@@ -348,10 +348,10 @@ class SaveToMongo(object):
         return item
 
     def _saveXMLYAudio(self,item):
-        key = 'audio' + self.now
         self.db['xmly_daily'].update(
             {
-                'key':key,
+                'key':'audio',
+                'day':self.now
             },
             {
                 "$inc":{"crawledCount":1}
@@ -386,10 +386,10 @@ class SaveToMongo(object):
         return item
 
     def _saveXMLYAlbum(self,item):
-        key = 'album' + self.now
         self.db['xmly_daily'].update(
             {
-                'key':key,
+                'key':'album',
+                'day':self.now
             },
             {
                 "$inc":{"crawledCount":1}
