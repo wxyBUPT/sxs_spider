@@ -11,6 +11,7 @@ import pymongo
 from scrapy.pipelines.files import FilesPipeline
 from scrapy.pipelines.images import ImagesPipeline
 import scrapy
+from datetime import date
 
 class MSpiderPipeline(object):
     def process_item(self, item, spider):
@@ -155,6 +156,7 @@ class SaveToMongo(object):
     def __init__(self,mongo_uri,mongo_db):
         self.mongo_uri = mongo_uri
         self.mongo_db = mongo_db
+        self.now = None
 
     @classmethod
     def from_crawler(cls,crawler):
@@ -171,6 +173,8 @@ class SaveToMongo(object):
         self.client.close()
 
     def process_item(self,item,spider):
+        #将每天爬取的数量保存到mongo中
+        self.now = date.today()
         #将具体的数据保存到 mongo 中
         s_type = item.s_type
         if s_type == 'xmly_audio':
@@ -189,6 +193,18 @@ class SaveToMongo(object):
             self.db[s_type].insert(dict(item))
 
     def _saveQTAlbum(self,item):
+        key =  'album' + self.now
+        self.db['qt_daily'].update(
+            {
+                'key':key,
+            },
+            {
+                "$inc":{"crawledCount":1}
+            },
+            {
+                "upsert":True
+            }
+        )
         album = self.db[item.collection].find_one(
             {
                 "category":item["category"],
@@ -215,6 +231,18 @@ class SaveToMongo(object):
         return item
 
     def _saveQTAudio(self,item):
+        key = 'audio' + self.now
+        self.db['qt_daily'].update(
+            {
+                'key':key,
+            },
+            {
+                "$inc":{"crawledCount":1}
+            },
+            {
+                "upsert":True
+            }
+        )
         audio = self.db[item.collection].find_one(
             {
                 "audioName":item["audioName"],
@@ -243,6 +271,18 @@ class SaveToMongo(object):
         return item
 
     def _saveKLAudio(self,item):
+        key = 'audio' + self.now
+        self.db['kl_daily'].update(
+            {
+                'key':key,
+            },
+            {
+                "$inc":{"crawledCount":1}
+            },
+            {
+                "upsert":True
+            }
+        )
         #以audioId 与 playUrl 为主键更新或者插入数据
         audio = self.db[item.collection].find_one(
                 {
@@ -277,6 +317,18 @@ class SaveToMongo(object):
         return item
 
     def _saveKlAlbum(self,item):
+        key = 'album' + self.now
+        self.db['kl_daily'].update(
+            {
+                'key':key,
+            },
+            {
+                "$inc":{"crawledCount":1}
+            },
+            {
+                "upsert":True
+            }
+        )
         album = self.db[item.collection].find_one(
             {
                 'categoryId':item['categoryId'],
@@ -304,6 +356,18 @@ class SaveToMongo(object):
         return item
 
     def _saveXMLYAudio(self,item):
+        key = 'audio' + self.now
+        self.db['xmly_daily'].update(
+            {
+                'key':key,
+            },
+            {
+                "$inc":{"crawledCount":1}
+            },
+            {
+                "upsert":True
+            }
+        )
         audio = self.db[item.collection].find_one(
             {
                 'album_id':item['album_id'],
@@ -332,6 +396,18 @@ class SaveToMongo(object):
         return item
 
     def _saveXMLYAlbum(self,item):
+        key = 'album' + self.now
+        self.db['xmly_daily'].update(
+            {
+                'key':key,
+            },
+            {
+                "$inc":{"crawledCount":1}
+            },
+            {
+                "upsert":True
+            }
+        )
         album = self.db[item.collection].find_one(
             {
                 'album_id':item['album_id']
