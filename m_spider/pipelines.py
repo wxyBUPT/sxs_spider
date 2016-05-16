@@ -194,9 +194,9 @@ class SaveToMongo(object):
             self.db[s_type].insert(dict(item))
 
     def _saveQTAlbum(self,item):
-        self.db['qt_daily'].update(
+        self.db['daily'].update(
             {
-                'key':'album',
+                'key':'qt_album',
                 'day':self.now
             },
             {
@@ -230,9 +230,9 @@ class SaveToMongo(object):
         return item
 
     def _saveQTAudio(self,item):
-        self.db['qt_daily'].update(
+        self.db['daily'].update(
             {
-                'key':'audio',
+                'key':'qt_audio',
                 'day':self.now
             },
             {
@@ -268,9 +268,9 @@ class SaveToMongo(object):
         return item
 
     def _saveKLAudio(self,item):
-        self.db['kl_daily'].update(
+        self.db['daily'].update(
             {
-                'key':'audio',
+                'key':'kl_audio',
                 'day':self.now
             },
             {
@@ -312,9 +312,9 @@ class SaveToMongo(object):
         return item
 
     def _saveKlAlbum(self,item):
-        self.db['kl_daily'].update(
+        self.db['daily'].update(
             {
-                'key':'album',
+                'key':'kl_album',
                 'day':self.now
             },
             {
@@ -349,9 +349,9 @@ class SaveToMongo(object):
         return item
 
     def _saveXMLYAudio(self,item):
-        self.db['xmly_daily'].update(
+        self.db['daily'].update(
             {
-                'key':'audio',
+                'key':'xmly_audio',
                 'day':self.now
             },
             {
@@ -387,9 +387,9 @@ class SaveToMongo(object):
         return item
 
     def _saveXMLYAlbum(self,item):
-        self.db['xmly_daily'].update(
+        self.db['daily'].update(
             {
-                'key':'album',
+                'key':'xmly_album',
                 'day':self.now
             },
             {
