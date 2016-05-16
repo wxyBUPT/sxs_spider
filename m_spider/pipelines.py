@@ -365,7 +365,7 @@ class SaveToMongo(object):
                 "$inc":{"crawledCount":1}
             },
             {
-                "upsert":True
+                "upsert":"true"
             }
         )
         audio = self.db[item.collection].find_one(
@@ -405,7 +405,7 @@ class SaveToMongo(object):
                 "$inc":{"crawledCount":1}
             },
             {
-                "upsert":True
+                "upsert":"true"
             }
         )
         album = self.db[item.collection].find_one(
