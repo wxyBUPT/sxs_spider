@@ -201,9 +201,7 @@ class SaveToMongo(object):
             {
                 "$inc":{"crawledCount":1}
             },
-            {
-                "upsert":True
-            }
+            upsert=True
         )
         album = self.db[item.collection].find_one(
             {
@@ -239,9 +237,7 @@ class SaveToMongo(object):
             {
                 "$inc":{"crawledCount":1}
             },
-            {
-                "upsert":True
-            }
+            upsert = True
         )
         audio = self.db[item.collection].find_one(
             {
@@ -279,9 +275,7 @@ class SaveToMongo(object):
             {
                 "$inc":{"crawledCount":1}
             },
-            {
-                "upsert":True
-            }
+            upsert = True
         )
         #以audioId 与 playUrl 为主键更新或者插入数据
         audio = self.db[item.collection].find_one(
@@ -325,9 +319,7 @@ class SaveToMongo(object):
             {
                 "$inc":{"crawledCount":1}
             },
-            {
-                "upsert":True
-            }
+            upsert = True
         )
         album = self.db[item.collection].find_one(
             {
@@ -364,9 +356,7 @@ class SaveToMongo(object):
             {
                 "$inc":{"crawledCount":1}
             },
-            {
-                "upsert":"true"
-            }
+            upsert = True
         )
         audio = self.db[item.collection].find_one(
             {
@@ -404,9 +394,7 @@ class SaveToMongo(object):
             {
                 "$inc":{"crawledCount":1}
             },
-            {
-                "upsert":"true"
-            }
+            upsert = True
         )
         album = self.db[item.collection].find_one(
             {
