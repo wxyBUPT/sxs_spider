@@ -174,7 +174,7 @@ class SaveToMongo(object):
 
     def process_item(self,item,spider):
         #将每天爬取的数量保存到mongo中
-        self.now = date.today()
+        self.now = str(date.today())
         #将具体的数据保存到 mongo 中
         s_type = item.s_type
         if s_type == 'xmly_audio':
