@@ -2,6 +2,7 @@
 from __future__ import absolute_import
 import urlparse
 import datetime
+import pprint
 
 import scrapy
 import requests
@@ -158,13 +159,17 @@ class XmlaSpider(scrapy.Spider):
             r = requests.get(a_url,headers = self.headers)
             tmpDict = r.json()
             try:
+                del tmpDict['discounted_price']
+                del tmpDict['price']
                 del tmpDict['id']
+                del tmpDict['is_free']
                 del tmpDict['waveform']
                 del tmpDict['formatted_created_at']
                 del tmpDict['is_favorited']
                 del tmpDict['have_more_intro']
                 del tmpDict['time_until_now']
                 del tmpDict['played_secs']
+                del tmpDict['is_paid']
             except:
                 pass
             audio.update(tmpDict)

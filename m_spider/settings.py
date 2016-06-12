@@ -50,7 +50,7 @@ NEWSPIDER_MODULE = 'm_spider.spiders'
 #REDIS_PASS = None
 
 #MongoDB 设置
-MONGO_URI = 'mongodb://localhost:27017'
+MONGO_URI = 'mongodb://114.112.103.33:27017'
 MONGO_DATABASE = 'test_spider'
 
 #设置下载图片存储的位置

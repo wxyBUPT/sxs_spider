@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+{# Jinja2 的模板 #}
+<MPCWebCmd>
+    <CommandType>AddTask</CommandType>
+    <AddTask>
+        <MPC>
+            <Header>
+                <Version>1.0</Version>
+                <RequestID>{{ RequestID }}</RequestID>
+                {# 使用如下的时间格式 #}
+                {# 2016-01-29 14:24:31 #}
+                <RequestTime>{{ RequestTime }}</RequestTime>
+                <RequestMQ />
+            </Header>
+
+            <Content>
+                <MPCType>AddTask</MPCType>
+                <AddTask>
+                    <BaseInfo>
+                        <TaskGUID>{{ TaskGUID }}</TaskGUID>
+                        {# TaskName 类似于 风尚CBD 类型#}
+                        <TaskName>{{ TaskName }}</TaskName>
+                        <ColumnName />
+                        <TaskLength>n/a</TaskLength>
+                        <TaskPriority>0</TaskPriority>
+                        <DispatchType>auto</DispatchType>
+                        <Controllable>1</Controllable>
+                        {#PutinTime 时间格式如下 2016-01-29 14:24:31 #}
+                        <PutinTime>{{ PutinTime }}</PutinTime>
+                    </BaseInfo>
+
+
+                    <TaskInfo>
+                        <Scope>SoapTargetInfo</Scope>
+                        <Schema />
+                        <Data>
+                            <SoapTargetInfo>
+
+                                {# <SoapTargetUri>http://172.20.13.108:8080/vms/services/IServiceServlet?wsdl</SoapTargetUri> #}
+                                <SoapTargetUri>{{ SoapTargetUri }} </SoapTargetUri>
+                            </SoapTargetInfo>
+                            <IsSplit>0</IsSplit>
+                            <transcodeSource>UPLOAD</transcodeSource>
+                        </Data>
+                    </TaskInfo>
+
+
+                    <TaskInfo>
+                        <Scope>DocumentInfo</Scope>
+                        <Schema />
+                        <Data>
+                            <DocumentInfo>
+                                {# PGMNAME 类似于 TaskName，就是节目的名称#}
+                                <PGMNAME>{{ PGMNAME }}</PGMNAME>
+                                {# <CATALOGNAME>音频收录\中央人民广播电台\都市之声</CATALOGNAME> #}
+                                <CATALOGNAME>{{ CATALOGNAME }}</CATALOGNAME>
+                                <EDITCATALOG>
+                                    <SYSTEM>BSRecorderActor</SYSTEM>
+                                    {# <PGMGUID>2b076d7d59c29d2b027bf8d2782a49fc</PGMGUID> #}
+                                    <PGMGUID>{{ PGMGUID }}</PGMGUID>
+                                    <AttributeItem>
+                                        <ItemCode>Title</ItemCode>
+                                        <ItemName>节目名称</ItemName>
+                                        {# <Value>风尚CBD</Value> #}
+                                        <Value>{{ Title }}</Value>
+                                    </AttributeItem>
+                                    <AttributeItem>
+                                        <ItemCode>CreatorName</ItemCode>
+                                        <ItemName>创建人姓名</ItemName>
+                                        {# <Value>None</Value> #}
+                                        <Value>{{ CreatorName }}</Value>
+                                    </AttributeItem>
+                                    <AttributeItem>
+                                        <ItemCode>PgmType</ItemCode>
+                                        <ItemName>节目类型</ItemName>
+                                        <Value>radio</Value>
+                                    </AttributeItem>
+                                    <AttributeItem>
+                                        <ItemCode>PgmNote</ItemCode>
+                                        <ItemName>节目描述</ItemName>
+                                        {# <Value>Good</Value> #}
+                                        <Value>{{ PgmNote }}</Value>
+                                    </AttributeItem>
+                                    <AttributeItem>
+                                        <ItemCode>firstplaytime</ItemCode>
+                                        <ItemName>首播时间</ItemName>
+                                        {# <Value>2016-01-29</Value> #}
+                                        <Value>{{ firstplaytime }}</Value>
+                                    </AttributeItem>
+                                    <AttributeItem>
+                                        <ItemCode>broadstarttime</ItemCode>
+                                        <ItemName>开始时间</ItemName>
+                                        {# <Value>2016-01-29 11:00:00</Value> #}
+                                        <Value>{{ broadstarttime }}</Value>
+                                    </AttributeItem>
+                                    <AttributeItem>
+                                        <ItemCode>broadendtime</ItemCode>
+                                        <ItemName>结束时间</ItemName>
+                                        {#<Value>2016-01-29 14:00:00</Value>#}
+                                        <Value>{{ broadendtime }}</Value>
+                                    </AttributeItem>
+                                </EDITCATALOG>
+                            </DocumentInfo>
+                        </Data>
+                    </TaskInfo>
+
+
+                    <MediaFile>
+                        <GroupType>gv</GroupType>
+                        <MediaType>mv</MediaType>
+                        {#<FileName>W:/recorder//recorder/2016/01/29/42372.mp4</FileName>#}
+                        <FileName>{{ FileName }}</FileName>
+                        <InPoint>0</InPoint>
+                        <OutPoint>-1</OutPoint>
+                    </MediaFile>
+                    <PolicyID>1125</PolicyID>
+                </AddTask>
+            </Content>
+
+        </MPC>
+    </AddTask>
+</MPCWebCmd>

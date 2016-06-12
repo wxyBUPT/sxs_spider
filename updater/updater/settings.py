@@ -15,7 +15,7 @@ SPIDER_MODULES = ['updater.spiders']
 NEWSPIDER_MODULE = 'updater.spiders'
 
 
-XMLY_STORE = {
+XMLY_SETTINGS = {
     "IMAGES_STORE":'/var/crawler/xmly/images',
     "FILES_STORE":'/var/crawler/xmly/audios'
 }
