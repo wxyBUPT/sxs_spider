@@ -20,7 +20,6 @@ logging.getLogger('').addHandler(debug_log)
 
 SPIDER_MODULES = ['m_spider.spiders']
 NEWSPIDER_MODULE = 'm_spider.spiders'
-
 #设置splash 代理
 #SPLASH_URL = 'http://192.168.99.100:8050'
 

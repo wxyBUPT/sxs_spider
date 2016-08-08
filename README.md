@@ -1,6 +1,9 @@
 本工程爬取三个媒体网站的元信息与音频信息，并将爬取到的信息存储到mongo中，三个网站包括喜马拉雅fm，蜻蜓fm，考拉fm（点播内容)
 
+**使用**  
+项目使用scrapy 框架，使用Centos，需要有mongo 环境，爬虫配置在./m_spider/settings.py,项目在python2.7 的虚拟环境下运行，相关依赖在 ./requirements.txt。
 
+环境准备完毕使用 scrapy list 查看所有爬虫，scrapy crawl 爬虫名爬取数据
 
 #数据库格式（原始数据部分）
 
