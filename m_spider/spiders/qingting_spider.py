@@ -27,7 +27,6 @@ class QingtingSpider(scrapy.Spider):
 		super(QingtingSpider, self).__init__()
 
 	def parse(self, response):
-		#print self.start_urls, self.allowdomains, self.playPR
 		for url in response.xpath('//div[@data-category="507"]/div/div/a'):
 			category1 = url.xpath('div/div[2]/h5/text()').extract()[0]
 			next_url = self.start_urls[0] + url.xpath('@data-switch-url').extract()[0]

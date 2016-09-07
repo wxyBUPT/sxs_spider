@@ -11,7 +11,6 @@ import pymongo
 from scrapy.pipelines.files import FilesPipeline
 from scrapy.pipelines.images import ImagesPipeline
 import scrapy
-from datetime import date
 
 class MSpiderPipeline(object):
     def process_item(self, item, spider):

@@ -2,7 +2,6 @@
 from __future__ import absolute_import
 import urlparse
 import datetime
-import pprint
 
 import scrapy
 import requests
