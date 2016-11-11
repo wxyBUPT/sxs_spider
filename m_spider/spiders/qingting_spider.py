@@ -2,7 +2,7 @@
 from __future__ import absolute_import
 import scrapy
 from scrapy.http import Request
-from ..items import QingtingItem,QTAudio
+from ..items import QingtingAlbum,QTAudio
 import datetime
 from scrapy.utils.project import get_project_settings
 
@@ -47,7 +47,7 @@ class QingtingSpider(scrapy.Spider):
 			yield Request(next_url, meta = response.meta, callback = self.parse_fourth)
 
 	def parse_fourth(self, response):
-		item = QingtingItem()
+		item = QingtingAlbum()
 		item['contentSource'] = "www.qingting.fm"
 		item['crawlType'] = "qt_album"
 		item['category'] = response.meta['category1']
@@ -79,4 +79,8 @@ class QingtingSpider(scrapy.Spider):
 			item['audios'].append(temp.copy())
 
 		yield item
+
+	def inspect(self,respons):
+		from scrapy.shell import inspect_response
+		inspect_response(respons,self)
 

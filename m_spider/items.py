@@ -394,6 +394,13 @@ class XMLYAudio(scrapy.Item):
     #上传者的姓名
     uploadUserName = scrapy.Field()
 
+
+class QTCategory(scrapy.Item):
+    collection = 'qt_category'
+    s_type = 'qt_category'
+    category_title = scrapy.Field()
+
+
 class QTAudio(scrapy.Item):
     collection = 'qt_audio'
     s_type = 'qt_audio'
@@ -404,10 +411,7 @@ class QTAudio(scrapy.Item):
     playUrl = scrapy.Field()
 
 
-
-
-
-class QingtingItem(scrapy.Item):
+class QingtingAlbum(scrapy.Item):
     collection = 'qt_item'
     s_type = 'qt_item'
     contentSource = scrapy.Field()  #"www.qingting.fm"
@@ -420,4 +424,4 @@ class QingtingItem(scrapy.Item):
     fullDescs = scrapy.Field()  #专辑介绍
     crawlTime = scrapy.Field()  #爬取时间
     audios = scrapy.Field() #专辑下节目列表
-    pass
+    albumUrl = scrapy.Field() # 专辑的url
