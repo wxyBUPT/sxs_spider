@@ -409,19 +409,20 @@ class QTAudio(scrapy.Item):
     album_title = scrapy.Field()
     audioName = scrapy.Field()
     playUrl = scrapy.Field()
+    duration = scrapy.Field()
 
 
 class QingtingAlbum(scrapy.Item):
     collection = 'qt_item'
     s_type = 'qt_item'
     contentSource = scrapy.Field()  #"www.qingting.fm"
-    crawlType = scrapy.Field()  #"qt_album"
-    category = scrapy.Field()   #总分类
-    subcategory = scrapy.Field()    #子分类
-    albumName = scrapy.Field()  #专辑名称
-    albumPicUrl = scrapy.Field()    #专辑图片链接
-    albumPicPath =scrapy.Field()    #专辑图片保存地址
-    fullDescs = scrapy.Field()  #专辑介绍
-    crawlTime = scrapy.Field()  #爬取时间
-    audios = scrapy.Field() #专辑下节目列表
-    albumUrl = scrapy.Field() # 专辑的url
+    crawlType = scrapy.Field()  # "qt_album"
+    category = scrapy.Field()   # 总分类
+    subcategory = scrapy.Field()    # 子分类
+    albumName = scrapy.Field()  # 专辑名称
+    albumPicUrl = scrapy.Field()    # 专辑图片链接
+    albumPicPath =scrapy.Field()    # 专辑图片保存地址
+    fullDescs = scrapy.Field()  # 专辑介绍
+    crawlTime = scrapy.Field()  # 爬取时间
+    audios = scrapy.Field()  # 专辑下节目列表
+    albumUrl = scrapy.Field()  # 专辑的url

@@ -35,7 +35,7 @@ class QtSpider(scrapy.Spider):
     def parse(self, response):
         urls = response.xpath('//div[@data-category="507"]/div/div/a');
         for url in urls:
-            
+
             category = url.xpath('div/div[2]/h5/text()').extract()[0]
             next_url = 'http://www.qingting.fm' + url.xpath('@data-switch-url').extract()[0]
             self.logger.info(u"Category: 开始爬取类别%s"%category)
@@ -87,6 +87,7 @@ class QtSpider(scrapy.Spider):
             audio['sub_category_title'] = album['subcategory']
             audio['album_title'] = album['albumName']
             audio['audioName'] = audio_info['name']
+            audio['duration'] = audio_info['duration']
             audio['playUrl'] = 'http://od.qingting.fm' + audio_info['urls'][0]
             self.stats.inc_value("Audio_count",1,0)
             yield audio
